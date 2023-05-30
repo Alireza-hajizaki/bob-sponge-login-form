@@ -51,12 +51,23 @@ const userInputBlur = ()=>{
     } ,10)
 }
 
-const userInputKeypress = ()=>{
-    console.log("userInputKeypress")
+const userInputKeydown = (event)=>{
+    if(rightEyePaddingLeft > 20){
+        return false
+    }
+    if(event.keyCode === 8){
+        leftEyePaddingLeft--
+        rightEyePaddingLeft--
+    }else{
+        leftEyePaddingLeft++
+        rightEyePaddingLeft++
+    }
+
+    leftEye.style.paddingLeft = leftEyePaddingLeft
+    rightEye.style.paddingLeft = rightEyePaddingLeft
 }
 
 const passInputFocus = ()=>{
-    console.log("passInputFocus")
     let eyesPosition = setInterval(() => {
         if(leftEyeTop === 63){
             clearInterval(eyesPosition)
@@ -97,7 +108,7 @@ const passInputBlur = ()=>{
 
 userInput.addEventListener('focus' , userInputFocus)
 userInput.addEventListener('blur' , userInputBlur)
-userInput.addEventListener('keypress' , userInputKeypress)
+userInput.addEventListener('keydown' , userInputKeydown)
 
 passInput.addEventListener('focus' , passInputFocus)
 passInput.addEventListener('blur' , passInputBlur)
