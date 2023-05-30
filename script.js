@@ -27,10 +27,41 @@ const userInputKeypress = ()=>{
 
 const passInputFocus = ()=>{
     console.log("passInputFocus")
+    let eyePosition = setInterval(() => {
+        if(leftEyeTop === 63){
+            clearInterval(eyePosition)
+        }
+
+        leftEye.style.top = leftEyeTop
+        leftEye.style.left = leftEyeLeft
+        rightEye.style.top = rightEyeTop
+        rightEye.style.left = rightEyeLeft
+
+        leftEyeTop--
+        leftEyeLeft++
+        rightEyeTop--
+        rightEyeLeft--
+
+    } , 10)
 }
 
 const passInputBlur = ()=>{
-    console.log("passInputBlur")
+    let eyePosition = setInterval(() => {
+        if(leftEyeTop === 75){
+            clearInterval(eyePosition)
+        }
+
+        leftEye.style.top = leftEyeTop
+        leftEye.style.left = leftEyeLeft
+        rightEye.style.top = rightEyeTop
+        rightEye.style.left = rightEyeLeft
+
+        leftEyeTop++
+        leftEyeLeft--
+        rightEyeTop++
+        rightEyeLeft++
+
+    } , 20)
 }
 
 
